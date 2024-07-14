@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  height: 540px;
+  width: 100%;
+}
+.subContainer{
+  margin: 0 auto;
+  height: 540px;
+  width: 40%;
+  background-color: #D1D6E3;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 10px 10px;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+.subContainer .contact,
+.subContainer .request {
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background-color: #F3F6FF;
+}
+
+/* left and bottom spacing for all heading */
+.contact h3{
+  padding: 5px 0 0 25px;
+}
+.contact h4, .request h4 {
+  padding: 5px 0 3px 25px;
+}
+.contact h5, .request h5 {
+  padding: 5px 0 3px 25px;
+}
+
+
+/* inputs and heading */
+/* Name and Email */
+.sideBySideUp {
+  padding: 8px 0 15px;
+  display: flex;  
+  justify-content: space-evenly;
+}
+.sideBySideUp .name h5,
+.sideBySideUp .mail h5 {
+  padding: 6px 0 10px 0;
+}
+
+/* Amount and Date */
+.sideBySideDown {
+  padding:0;
+  display: flex;
+  justify-content: space-evenly;
+}
+.sideBySideDown .amount h5,
+.sideBySideDown .date h5 {
+  padding: 8px 0;
+}
+
+/* to hide the up and down arrow in the amount section */
+  #floatInput[type="number"]::-webkit-outer-spin-button,
+    #floatInput[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .amount input{
+      width: 130px;
+    }
+.date input{
+  width: 167px;
+}
+.date p{
+  /* display: none; */
+  font-size: 12px;
+  padding: 5px 0;
+  margin: 0;
+}
+input {
+  border: 1px solid;
+  border-radius: 5px;
+  outline: none;
+  font-size: 15px;
+}
+.uniqueSpaceForInput{
+  margin: 5px 0 10px 25px;
+  width: 85%;
+}
+
+
+/* Payment Request Button */
+.subContainer .btn{
+  height: 22px;
+  width: 100%;
+  position: relative;
+}
+.subContainer button{
+  position: absolute;
+  padding: 4px 0;
+  left: 65%;
+  width: 140px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: #FF6649;
+}
+
+
+/* Dropdown container */
+.contact .wrapper {
+  width: 60%;
+  padding: 5px 0 0 25px;
+}
+
+.select-btn,
+li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Dropdown button */
+.select-btn {
+  height: inherit;
+  padding: 0 20px;
+  font-size: 15px;
+  background: #fff;
+  border-radius: 7px;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.select-btn i {
+  font-size: 21px;
+  transition: transform 0.3s linear;
+}
+
+.wrapper.active .select-btn i {
+  transform: rotate(-180deg);
+}
+
+/* search and list popup */
+.content {
+  display: none;
+  padding: 10px;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* enabling once dropdown button clicked */
+.wrapper.active .content {
+  display: block;
+}
+
+.content .search {
+  position: relative;
+}
+
+.search i {
+  top: 50%;
+  left: 15px;
+  color: #999;
+  font-size: 20px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+.search input {
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 0 20px 0 40px;
+  border: 1px solid #B3B3B3;
+}
+
+.search input:focus {
+  border: 2px solid;
+  padding-left: 42px;
+  border: 2px solid #bfbfbf;
+}
+
+.search input::placeholder {
+  color: #bfbfbf;
+}
+
+/* suggessions (Li tag) */
+.content .options {
+  margin-top: 5px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+/* Search scroll bar */
+.options::-webkit-scrollbar {
+  width: 7px;
+}
+
+.options::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+
+.options::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 25px;
+}
+
+/* Hover effect while hover the options */
+.options li:hover,
+li.selected {
+  background: #f2f2f2;
+}
+
+
+/* company names */
+.company-wrapper{
+  height: auto;
+  width: 240px;
+  padding-left: 25px;
+}
+.company-wrapper .select-company {
+  height: inherit;
+  width: inherit;
+  padding: 0 20px;
+  font-size: 15px;
+  background: #fff;
+  border-radius: 7px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.select-company i {
+  font-size: 21px;
+  transition: transform 0.3s linear;
+}
+.company-wrapper.active .select-company i {
+  transform: rotate(-180deg);
+}
+/* search and list popup */
+.company-wrapper .contents {
+  display: none;
+  padding: 10px;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* enabling once dropdown button clicked */
+.company-wrapper.active .contents {
+  display: block;
+}
+
+
+
+.option li{
+  font-size: 14px;
+}
+
+/* suggessions (Li tag) */
+.contents .option {
+  margin-top: 5px;
+  max-height: 50px;
+  overflow-y: auto;
+}
+/* Search scroll bar */
+.option::-webkit-scrollbar {
+  width: 7px;
+}
+
+.option::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+
+.option::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 25px;
+}
+
+/* Hover effect while hover the option */
+.option li:hover,
+li.selected {
+  background: #f2f2f2;
+}

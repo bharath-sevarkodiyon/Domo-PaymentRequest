@@ -1,0 +1,17 @@
+{
+  "name": "Payment_Request",
+  "version": "0.1.0",
+  "size": {
+    "width": 5,
+    "height": 2
+  },
+  "mapping": [
+    {
+      "dataSetId": "2c9d8b79-914c-41a8-8cf8-111eea12ccf9",
+      "alias": "Olist_ds",
+      "fields": []
+    }
+  ],
+  "fileName": "manifest.json",
+  "id": "fedaf450-6e1a-4626-b1c0-1f604762e0d3"
+}
