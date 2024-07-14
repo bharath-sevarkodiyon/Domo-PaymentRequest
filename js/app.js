@@ -8,10 +8,10 @@ let personName = [];
 domo.get(`/domo/users/v1?includeDetails=true&limit=137`).then(function(data){
     data.forEach(element => {
         personName.push(element.displayName);
-        // console.log(personName);
         addPerson();
-    });
-})
+        });
+    })
+
 // Adding person name in a li element
 function addPerson(selectedPerson) {
     options.innerHTML = "";
@@ -22,14 +22,16 @@ function addPerson(selectedPerson) {
     });
 }
 // Toggling the class state
+let choosedPerson;
 function updateName(selectedLi) {
     searchInp.value = "";
     addPerson(selectedLi.innerText);
     wrapper.classList.remove("active");
     selectBtn.firstElementChild.innerText = selectedLi.innerText;
+    choosedPerson = selectBtn.firstElementChild.innerText;
 }
 
-// search the person name
+// search the person name(Requestor name)
 searchInp.addEventListener("keyup", () => {
     let arr = [];
     let searchWord = searchInp.value.toLowerCase();
@@ -43,53 +45,43 @@ searchInp.addEventListener("keyup", () => {
 });
 selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
 
-
-
-// document.getElementById('floatInput').addEventListener('keypress', function (e) {
-//         // Convert the input value to a float and update the input value
-//         e.target.value = parseFloat(e.target.value);
-//     });
-
-// document.getElementById('floatInput').addEventListener('input', function (e) {
-//         // Ensure only digits are entered
-//         e.target.value = e.target.value.replace(/[^0-9]/g, '');
-
-//         // Limit to 7 digits
-//         if (e.target.value.length > 7) {
-//             e.target.value = e.target.value.slice(0, 7);
-//         }
-//     });
+// To select a currency type
+let selectedCurrency;
+document.getElementById("dropdown").addEventListener("change", function() {
+    selectedCurrency = this.options[this.selectedIndex].text;
+});
 
 // To change the entered number into float
+let amount;
     document.getElementById('floatInput').addEventListener('blur', function (e) {
-            e.target.value = parseFloat(e.target.value).toFixed(2);
+        e.target.value = parseFloat(e.target.value).toFixed(2);
+        amount = e.target.value;
     });
 
 // Getting current date
-function getCurrentDate() {
+function currentDate(){
     const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    let year = today.getFullYear();
+    let month = String(today.getMonth() + 1).padStart(2, '0');
+    let day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`
 }
-// Set the current date as the default value for the input element
+function getCurrentDate() {
+    const today = new Date(currentDate());
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return today.toLocaleDateString('en-US', options);
+}
 document.getElementById('dateInput').value = getCurrentDate();
 
-// Toggling the class state
-// function companyName() {
-//     wrapper.classList.remove("active");
-//     selectBtn.firstElementChild.innerText = selectedLi.innerText;
-// }
-// let companyWrapper = document.querySelector(".company-wrapper");
-// document.querySelector(".company-wrapper").addEventListener("click", () => 
-//     companyWrapper.classList.toggle("active"));
+// when ever the page loads
+window.onload = ()=>{
+    document.getElementById("dropdown").value = "$";
+    document.getElementById("dataInput").value = currentDate();
+}
 
 
-// let companyWrapper = document.querySelector(".company-wrapper");
-// let selectCompany = document.querySelector(".select-company");
-// let contents = document.querySelector(".contents");
 
+// To make the dropdown to show company names
 const companyWrapper = document.querySelector(".company-wrapper"),
 selectCompany = companyWrapper.querySelector(".select-company"),
 option = companyWrapper.querySelector(".option");
@@ -103,9 +95,48 @@ function addCompany(selectedPerson) {
     });
 }
 addCompany()
+let selectedCompany;
 function updateCompany(selectedLi) {
     addCompany(selectedLi.innerText);
     companyWrapper.classList.remove("active");
     selectCompany.firstElementChild.innerText = selectedLi.innerText;
+    selectedCompany = selectCompany.firstElementChild.innerText;
 }
 selectCompany.addEventListener("click", () => companyWrapper.classList.toggle("active"));
+
+// To get to know who logged in the card
+let enteredName = document.querySelector(".name").value;
+let mail = document.querySelector(".mail")
+let currentUserName;
+    let currentUser = domo.env.userId;
+    domo.get(`/domo/users/v1/${currentUser}?includeDetails=true`)
+    .then(function(data){
+        currentUserName =  data.displayName;
+})
+
+let send = document.getElementById("send"); 
+send.addEventListener("click", ()=>{        
+    const subject = `Payment request from ${selectedCompany}, ${currentUserName}`;
+    const emailContent = `
+        <h5>Hi ${choosedPerson},</h5>
+        <p>${selectedCompany} ${currentUserName}, requested <b><i>${amount}${selectedCurrency}</i></b> payment.</p>
+        <p>You need to make a payment before <u>${getCurrentDate()}</u>.</p>
+        <p>Thanks,<br>${currentUserName}</p>
+    `;
+    domo.get(`/domo/users/v1?includeDetails=true`).then(function(data){  // it will give all the data's from domo
+        let id = []; // temp variable
+        for(let iterator of data){                       //
+            if(choosedPerson === iterator.displayName){             // user entered mailid with domo's mail id
+                id.push(iterator.id);                   // domo user id stroing in temp variable
+            }
+        }
+        const startWorkflow = (alias, body) => {
+        domo.post(`/domo/workflow/v1/models/${alias}/start`, body)  // mail sending api
+    }
+    startWorkflow("sendEmail", { to: id[0], subject: subject, body: emailContent})
+    })
+    amount.innerHTML = "";
+});
+
+
+

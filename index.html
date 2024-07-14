@@ -53,9 +53,9 @@
         <div class="sideBySideDown">
           <div class="amount">
             <h5>Amount</h5>
-            <select id="dropdown" style="font-family: 'Times New Roman', Times, serif;">
-              <option value="value1">$</option>
-              <option value="value2">₹</option>
+            <select id="dropdown">
+              <option onclick="selectOption('value2')" value="value1">$</option>
+              <option onclick="selectOption('value1')" value="value2">₹</option>
             </select>
             <input type="number" id="floatInput" step="0.01">
           </div>
@@ -66,11 +66,6 @@
           </div>
         </div>
         <h5 id="uniqueSpaceForHeading">Company name to show on request</h5>
-        <!-- <select id="dropdown" style="font-family: 'Times New Roman', Times, serif;">
-          <option value="value1">GWC</option>
-          <option value="value2">Domo</option>
-        </select> -->
-        <!-- <input type="text"> -->
         <div class="company-wrapper">
           <div class="select-company">
             <span>Select the company</span>
@@ -84,11 +79,10 @@
         <input type="number" value="5496198584584769" class="uniqueSpaceForInput">
       </div>
       <div class="btn">
-        <button>Request payment</button>
+        <button id="send">Request payment</button>
       </div>
       </div>
     </div>
-    <!-- <div>Hello</div> -->
     <main id="app"></main>
     <script src="js/helpers.js"></script>
     <script src="components/router.js"></script>

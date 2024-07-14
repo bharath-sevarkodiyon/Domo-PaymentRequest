@@ -13,12 +13,12 @@
 }
 .subContainer{
   margin: 0 auto;
-  height: 540px;
-  width: 40%;
+  height: 530px;
+  width: 37%;
   background-color: #D1D6E3;
   display: flex;
   flex-direction: column;
-  padding: 10px 10px 10px 10px;
+  padding: 6px 6px 6px 6px;
   justify-content: space-between;
   border-radius: 10px;
 }
@@ -85,20 +85,24 @@
   margin: 0;
 }
 input {
-  border: 1px solid;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   outline: none;
-  font-size: 15px;
+  font-size: 14px;
+  padding-left: 5px;
 }
 .uniqueSpaceForInput{
-  margin: 5px 0 10px 25px;
-  width: 85%;
+  margin: 5px 0 17px 25px;
+  width: 54%;
 }
-
+#dropdown{
+  height: 28px;
+  width: 35px;
+}
 
 /* Payment Request Button */
 .subContainer .btn{
-  height: 22px;
+  height: 27px;
   width: 100%;
   position: relative;
 }
@@ -111,6 +115,7 @@ input {
   color: white;
   border-radius: 5px;
   background-color: #FF6649;
+  cursor: pointer;
 }
 
 
@@ -131,7 +136,7 @@ li {
 .select-btn {
   height: inherit;
   padding: 0 20px;
-  font-size: 15px;
+  font-size: 14px;
   background: #fff;
   border-radius: 7px;
   justify-content: space-between;
@@ -149,6 +154,9 @@ li {
 
 /* search and list popup */
 .content {
+  position: absolute;
+  margin-top: 3px;
+  width: 19.3%;
   display: none;
   padding: 10px;
   background: #fff;
@@ -176,7 +184,7 @@ li {
 }
 
 .search input {
-  width: 100%;
+  width:  80%;
   outline: none;
   font-size: 16px;
   border-radius: 5px;
@@ -210,12 +218,10 @@ li {
   background: #f1f1f1;
   border-radius: 25px;
 }
-
 .options::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 25px;
 }
-
 /* Hover effect while hover the options */
 .options li:hover,
 li.selected {
@@ -226,14 +232,14 @@ li.selected {
 /* company names */
 .company-wrapper{
   height: auto;
-  width: 240px;
-  padding-left: 25px;
+  width: 225px;
+  padding: 7px 0 10px 25px;
 }
 .company-wrapper .select-company {
   height: inherit;
   width: inherit;
   padding: 0 20px;
-  font-size: 15px;
+  font-size: 14px;
   background: #fff;
   border-radius: 7px;
   display: flex;
@@ -248,8 +254,11 @@ li.selected {
 .company-wrapper.active .select-company i {
   transform: rotate(-180deg);
 }
-/* search and list popup */
+/* list popup */
 .company-wrapper .contents {
+  position: absolute;
+  margin-top: 3px;
+  width: 19.3%;
   display: none;
   padding: 10px;
   background: #fff;
@@ -261,8 +270,6 @@ li.selected {
 .company-wrapper.active .contents {
   display: block;
 }
-
-
 
 .option li{
   font-size: 14px;
