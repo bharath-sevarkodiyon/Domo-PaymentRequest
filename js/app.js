@@ -118,7 +118,7 @@ let send = document.getElementById("send");
 send.addEventListener("click", ()=>{        
     const subject = `Payment request from ${selectedCompany}, ${currentUserName}`;
     const emailContent = `
-        <h5>Hi ${choosedPerson},</h5>
+        <h6>Hi ${choosedPerson},</h6>
         <p>${selectedCompany} ${currentUserName}, requested <b><i>${amount}${selectedCurrency}</i></b> payment.</p>
         <p>You need to make a payment before <u>${getCurrentDate()}</u>.</p>
         <p>Thanks,<br>${currentUserName}</p>
