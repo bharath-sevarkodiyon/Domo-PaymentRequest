@@ -92,8 +92,12 @@ input {
   padding-left: 5px;
 }
 .uniqueSpaceForInput{
+  padding-left: 7px;
   margin: 5px 0 17px 25px;
   width: 54%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
 }
 #dropdown{
   height: 28px;

@@ -1,21 +1,10 @@
 <html>
   <head>
-    <!-- <title>Payment request/title> -->
+    <title>Payment request</title>
     <link rel="stylesheet" href="styles/app.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   </head>
   <body>
-    <!-- <header id="header">Payment_Request</header>
-    <nav>
-      <ul>
-        <li id="nav-home"><a href="#home">Home</a></li>
-        <li id="nav-leads"><a href="#leads">Leads</a></li>
-        <li id="nav-opportunities">
-          <a href="#opportunities">Opportunities</a>
-        </li>
-        <li id="nav-reports"><a href="#reports">Reports</a></li>
-      </ul>
-    </nav> -->
     <div class="container">
       <div class="subContainer">
       <div class="contact">
@@ -62,7 +51,7 @@
           <div class="date">
             <h5>Due date</h5>
             <input type="date" id="dateInput">
-            <p>28days from now on</p>
+            <p id="dayCalculate"></p>
           </div>
         </div>
         <h5 id="uniqueSpaceForHeading">Company name to show on request</h5>
@@ -76,7 +65,11 @@
           </div>
         </div>
         <h5>Destination Account</h5>
-        <input type="number" value="5496198584584769" class="uniqueSpaceForInput">
+        <select id="uniqueSelect"  class="uniqueSpaceForInput">
+          <option>5496198584584769</option>
+          <option>5496198523649213</option>
+        </select>
+        <!-- <input type="number" value="5496198584584769" class="uniqueSpaceForInput"> -->
       </div>
       <div class="btn">
         <button id="send">Request payment</button>

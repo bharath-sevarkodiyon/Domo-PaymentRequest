@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "size": {
     "width": 5,
-    "height": 2
+    "height": 4
   },
   "mapping": [
     {
@@ -41,7 +41,33 @@
         }
       ]
     }],
+    "collections": [
+    {
+      "name": "paymentDetails",
+      "schema": {"columns": 
+            [
+              { "name": "requested_by", "type": "STRING" },
+              { "name": "requested_to", "type": "STRING" },
+              { "name": "contact_details", "type": "STRING" },
+              { "name": "request_details", "type": "STRING" },
+              { "name": "name", "type": "STRING" },
+              { "name": "user_id", "type": "STRING" },
+              { "name": "user_email", "type": "STRING" },
+              { "name": "email", "type": "STRING" },
+              { "name": "amount", "type": "DOUBLE" },
+              { "name": "currency", "type": "STRING" },
+              { "name": "due_date", "type": "STRING" },
+              { "name": "company_name", "type": "STRING" },
+              { "name": "destination_account", "type": "STRING" }
+            ]
+        },
+      "syncEnabled": true
+    },
+    {
+      "name": "paymentDetails"
+    }
+  ],
   "fileName": "manifest.json",
   "id": "fedaf450-6e1a-4626-b1c0-1f604762e0d3",
-  "proxyId": "61e54b0c-13e7-47d3-8861-e6b45bd04f6d"
+  "proxyId": "4e24e06d-4fff-42dd-9ce5-6e5889052221"
 }
